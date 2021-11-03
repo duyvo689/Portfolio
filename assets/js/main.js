@@ -1,39 +1,48 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
+$(document).ready(function () {
 
+    // $('#menu').click(function () {
+    //     $(this).toggleClass('fa-times');
+    //     $('.navbar').toggleClass('nav-toggle');
+    // });
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
+    $(window).on('scroll load', function () {
+        $('#menu').removeClass('fa-times');
+        $('.navbar').removeClass('nav-toggle');
+    });
 
+    $('.portfolio .button-container .btn').click(function () {
 
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
+        let filter = $(this).attr('data-filter');
 
+        if (filter == 'all') {
+            $('.portfolio .image-container .box').show('400')
+        } else {
+            $('.portfolio .image-container .box').not('.' + filter).hide('200');
+            $('.portfolio .image-container .box').filter('.' + filter).show('400');
+        }
 
-/*==================== REMOVE MENU MOBILE ====================*/
+    });
 
+    $('#theme-toggler').click(function () {
+        $(this).toggleClass('fa-sun');
+        $('body').toggleClass('dark-theme');
+    });
 
-/*==================== ACCORDION SKILLS ====================*/
+    // smooth scrolling 
 
+    $('a[href*="#"]').on('click', function (e) {
 
-/*==================== QUALIFICATION TABS ====================*/
+        e.preventDefault();
 
+        $('html, body').animate({
 
-/*==================== SERVICES MODAL ====================*/
+            scrollTop: $($(this).attr('href')).offset().top,
 
+        },
+            500,
+            'linear'
+        );
 
-/*==================== PORTFOLIO SWIPER  ====================*/
+    });
 
-
-/*==================== TESTIMONIAL ====================*/
-
-
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-
-
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
-
-
-/*==================== SHOW SCROLL UP ====================*/ 
-
-
-/*==================== DARK LIGHT THEME ====================*/ 
+});
